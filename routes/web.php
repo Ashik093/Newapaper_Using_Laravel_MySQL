@@ -120,4 +120,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/edit/photo/gallery/{id}','Backend\PhotoController@edit')->name('photo.gallery.edit');
     Route::post('/update/photo/gallery/{id}','Backend\PhotoController@update')->name('update.photo');
 
+    //video gallery start
+    Route::get('/video/gallery','Backend\VideoController@index')->name('video.gallery');
+    Route::post('/store/video','Backend\VideoController@store')->name('store.video');
+    Route::get('/delete/video/gallery/{id}','Backend\VideoController@delete')->name('video.gallery.delete');
+    Route::get('/edit/video/gallery/{id}','Backend\VideoController@edit')->name('video.gallery.edit');
+    Route::post('/update/video/gallery/{id}','Backend\VideoController@update')->name('update.video');
+
 });

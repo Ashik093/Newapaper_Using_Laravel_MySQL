@@ -377,7 +377,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('seo') }}" class="nav-link">
+                <a href="{{ route('video.gallery') }}" class="nav-link">
                   <i class="fas fa-record-vinyl nav-icon"></i>
                   <p>Video Gallery</p>
                 </a>
