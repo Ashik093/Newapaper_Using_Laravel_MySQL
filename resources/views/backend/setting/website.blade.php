@@ -43,7 +43,7 @@
 			      <tbody>
 			      @foreach($websites as $website)
 				    <tr>
-				        <td>{{ $website->name }}</td>
+				        <td>{{ $website->name_en }}|{{ $website->name_bn }}</td>
 				        <td>{{ $website->url }}</td>
 				        <td><div class="btn-group"><a href="{{ route('website.edit',$website->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a><a href="{{ route('website.delete',$website->id) }}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash-alt"></i></a></div></td>
 				    </tr>
@@ -82,10 +82,17 @@
             	@csrf
             	<div class="modal-body">
              	  <div class="form-group">
-             	    <label>Name</label>
-             	    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Website Name">
+             	    <label>Name English</label>
+             	    <input type="text" name="name_en" id="name_en" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter Website Name English">
              	  </div>
-             	  @error('name')
+             	  @error('name_en')
+             	      <div class="alert alert-danger">{{ $message }}</div>
+             	  @enderror
+             	  <div class="form-group">
+             	    <label>Name Bangla</label>
+             	    <input type="text" name="name_bn" id="name_bn" class="form-control @error('name_bn') is-invalid @enderror" placeholder="Enter Website Name Bangla">
+             	  </div>
+             	  @error('name_bn')
              	      <div class="alert alert-danger">{{ $message }}</div>
              	  @enderror
              	  <div class="form-group">

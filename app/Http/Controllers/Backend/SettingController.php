@@ -209,7 +209,8 @@ class SettingController extends Controller
     public function updateNotice(Request $request,$id)
     {
         $notice = Notice::find($id);
-        $notice->notice = $request->notice;
+        $notice->notice_en = $request->notice_en;
+        $notice->notice_bn = $request->notice_bn;
 
 
         if ($notice->save()) {
@@ -284,11 +285,13 @@ class SettingController extends Controller
     public function storeWebsite(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name_en' => 'required',
+            'name_bn' => 'required',
             'url' => 'required|unique:websites',
         ]);
         $website = new Website();
-        $website->name = $request->name;
+        $website->name_en = $request->name_en;
+        $website->name_bn = $request->name_bn;
         $website->url = $request->url;
 
         if ($website->save()) {
@@ -338,11 +341,13 @@ class SettingController extends Controller
     public function updateWebsite(Request $request,$id)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name_en' => 'required',
+            'name_bn' => 'required',
             'url' => 'required',
         ]);
         $website = Website::find($id);
-        $website->name = $request->name;
+        $website->name_en = $request->name_en;
+        $website->name_bn = $request->name_bn;
         $website->url = $request->url;
 
         if ($website->save()) {

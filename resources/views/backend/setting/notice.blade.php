@@ -37,12 +37,21 @@
 								<a href="{{ route('active.notice',$notice->id) }}" class="btn btn-sm btn-success" style="float: right;">Active</a>
 							@endif
 							<div class="form-group mt-4">
-								<label>Notice</label>
-								<textarea name="notice" id="notice" class="form-control @error('notice') is-invalid @enderror">{{ $notice->notice }}</textarea>
+								<label>Notice EnglisH</label>
+								<textarea name="notice_en" id="notice_en" class="form-control @error('notice_en') is-invalid @enderror">{{ $notice->notice_en }}</textarea>
 							</div>
-							@error('fajr_en')
+							@error('notice_en')
              	      			<div class="alert alert-danger">{{ $message }}</div>
              	 			 @enderror
+
+             	 			 <div class="form-group mt-4">
+								<label>Notice Bangla</label>
+								<textarea name="notice_bn" id="notice_bn" class="form-control @error('notice_bn') is-invalid @enderror">{{ $notice->notice_bn }}</textarea>
+							</div>
+							@error('notice_bn')
+             	      			<div class="alert alert-danger">{{ $message }}</div>
+             	 			 @enderror
+             	 			 
              	 			 @if($notice->status == 1)
 								<span class="text-success">Notice is now activated</span>
 							@elseif($notice->status == 0)

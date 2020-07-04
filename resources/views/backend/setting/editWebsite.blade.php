@@ -37,10 +37,18 @@
             	@csrf
             	<div class="modal-body">
              	  <div class="form-group">
-             	    <label>Name</label>
-             	    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Website Name" value="{{ $website->name }}">
+             	    <label>Name English</label>
+             	    <input type="text" name="name_en" id="name_en" class="form-control @error('name_en') is-invalid @enderror" placeholder="Enter Website Name English" value="{{ $website->name_en }}">
              	  </div>
-             	  @error('name')
+             	  @error('name_en')
+             	      <div class="alert alert-danger">{{ $message }}</div>
+             	  @enderror
+
+             	  <div class="form-group">
+             	    <label>Name Bangla</label>
+             	    <input type="text" name="name_bn" id="name_bn" class="form-control @error('name_bn') is-invalid @enderror" placeholder="Enter Website Name Bangla" value="{{ $website->name_en }}">
+             	  </div>
+             	  @error('name_bn')
              	      <div class="alert alert-danger">{{ $message }}</div>
              	  @enderror
              	  <div class="form-group">

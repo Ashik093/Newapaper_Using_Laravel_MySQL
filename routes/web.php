@@ -5,11 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 //frontroutes
 
-
 Route::get('/','Frontend\FrontController@index')->name('/');
+Route::get('/bangla','Frontend\LanguageController@bangla')->name('bangla');
+Route::get('/english','Frontend\LanguageController@english')->name('english');
 
+
+
+//default
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 //admin

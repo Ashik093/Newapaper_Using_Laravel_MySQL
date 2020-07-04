@@ -48,7 +48,11 @@
 					        <td>{{ $post->category->name_bn }}</td>
 					        <td>{{ $post->subcategory->name_bn }}</td>
 					        <td>{{ $post->title_bn }}</td>
-					        <td><img src="{{ url($post->image) }}" style="widows: 50px;height: 50px;" alt=""></td>
+					        <td>
+					        	@if($post->image)
+									<img src="{{ url($post->image) }}" style="widows: 50px;height: 50px;" alt="">
+					        	@endif
+					        </td>
 					        <td>{{ $post->post_date }}</td>
 					        <td><div class="btn-group"><a href="{{ route('edit.post',$post->id) }}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a><a href="{{ route('soft.delete.post',$post->id) }}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash-alt"></i></a></div></td>
 				    	</tr>
