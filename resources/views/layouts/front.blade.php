@@ -3,7 +3,7 @@
     $subcategories = App\Model\Subcategory::where('soft_delete',0)->get();
     $seo = App\Model\Seo::first();
     $social = App\Model\Social::first();
-    $headlines = App\Model\Post::where('headline',1)->get();
+    $headlines = App\Model\Post::where('headline',1)->orderBy('id','DESC')->get();
     $notice = App\Model\Notice::first();
 @endphp
  @php
