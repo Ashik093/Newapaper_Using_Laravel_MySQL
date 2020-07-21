@@ -251,27 +251,46 @@
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="bg-one">
-						<div class="cetagory-title-02"><a href="#">খেলাধুলা <i class="fa fa-angle-right" aria-hidden="true"></i> <span><i class="fa fa-plus" aria-hidden="true"></i> সব খবর  </span></a></div>
+						<div class="cetagory-title-02"><a href="#">
+							@if(session()->get('lang')== 'English')
+							  	{{ $fourthCategory->name_en }}
+							@else
+								{{ $fourthCategory->name_bn }}
+							@endif
+						 <i class="fa fa-angle-right" aria-hidden="true"></i><span>
+									@if(session()->get('lang')== 'English')
+								   		More
+									@else
+										আরও
+									@endif
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+								</span></a></div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+									<a href="#"><img src="{{ URL::to($fourthCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="#">
+										@if(session()->get('lang')== 'English')
+											{{ $fourthCategoryPostsBig->title_en }}
+										@else
+											{{ $fourthCategoryPostsBig->title_bn }}
+										@endif
+									</a> </h4>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
+								@foreach($fourthCategoryPostsSmall as $row)
+									<div class="image-title">
+										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="#">
+											@if(session()->get('lang')== 'English')
+										   		{{ $row->title_en }}
+											@else
+												{{ $row->title_bn }}
+											@endif
+										</a> </h4>
+									</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
@@ -281,66 +300,105 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="bg-one">
-						<div class="cetagory-title-02"><a href="#">খেলাধুলা <i class="fa fa-angle-right" aria-hidden="true"></i> <span><i class="fa fa-plus" aria-hidden="true"></i> সব খবর  </span></a></div>
+						<div class="cetagory-title-02">
+							<a href="#">
+								@if(session()->get('lang')== 'English')
+							  		{{ $fifthCategory->name_en }}
+								@else
+									{{ $fifthCategory->name_bn }}
+								@endif
+							  <i class="fa fa-angle-right" aria-hidden="true"></i><span>
+									@if(session()->get('lang')== 'English')
+								   		More
+									@else
+										আরও
+									@endif
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+								</span></a></div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+									<a href="#"><img src="{{ URL::to($fifthCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="#">
+										@if(session()->get('lang')== 'English')
+											{{ $fifthCategoryPostsBig->title_en }}
+										@else
+											{{ $fifthCategoryPostsBig->title_bn }}
+										@endif
+									</a> </h4>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
+								@foreach($fifthCategoryPostsSmall as $row)
+									<div class="image-title">
+										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="#">
+											@if(session()->get('lang')== 'English')
+										   		{{ $row->title_en }}
+											@else
+												{{ $row->title_bn }}
+											@endif
+										</a> </h4>
+									</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="bg-one">
-						<div class="cetagory-title-02"><a href="#">খেলাধুলা <i class="fa fa-angle-right" aria-hidden="true"></i> <span><i class="fa fa-plus" aria-hidden="true"></i> সব খবর  </span></a></div>
+						<div class="cetagory-title-02"><a href="#">@if(session()->get('lang')== 'English')
+							  		{{ $sixCategory->name_en }}
+								@else
+									{{ $sixCategory->name_bn }}
+								@endif
+							  <i class="fa fa-angle-right" aria-hidden="true"></i><span>
+									@if(session()->get('lang')== 'English')
+								   		More
+									@else
+										আরও
+									@endif
+								<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+								</span></a></div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+									<a href="#"><img src="{{ URL::to($sixCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="#">
+										@if(session()->get('lang')== 'English')
+											{{ $sixCategoryPostsBig->title_en }}
+										@else
+											{{ $sixCategoryPostsBig->title_bn }}
+										@endif
+									</a> </h4>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
-								<div class="image-title">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-								</div>
+								@foreach($sixCategoryPostsSmall as $row)
+									<div class="image-title">
+										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="#">
+											@if(session()->get('lang')== 'English')
+										   		{{ $row->title_en }}
+											@else
+												{{ $row->title_bn }}
+											@endif
+										</a> </h4>
+									</div>
+								@endforeach
 							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
 			<!-- add-start -->	
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="assets/img/top-ad.jpg" alt="" /></div>
+					<div class="add"><img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" /></div>
 				</div>
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="assets/img/top-ad.jpg" alt="" /></div>
+					<div class="add"><img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" /></div>
 				</div>
 			</div><!-- /.add-close -->	
 			
@@ -352,41 +410,95 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-9 col-sm-9">
-					<div class="cetagory-title-02"><a href="#">সারাদেশে  <i class="fa fa-angle-right" aria-hidden="true"></i>  <span><i class="fa fa-plus" aria-hidden="true"></i> সব খবর  </span></a></div>
-					
 					<div class="row">
-						<div class="col-md-4 col-sm-4">
-							<div class="top-news">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+						<div class="col-md-6 col-sm-6">
+							<div class="bg-one">
+								<div class="cetagory-title-02"><a href="#">@if(session()->get('lang')== 'English')
+									  		{{ $sevenCategory->name_en }}
+										@else
+											{{ $sevenCategory->name_bn }}
+										@endif
+									  <i class="fa fa-angle-right" aria-hidden="true"></i><span>
+											@if(session()->get('lang')== 'English')
+										   		More
+											@else
+												আরও
+											@endif
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+										</span></a></div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="top-news">
+											<a href="#"><img src="{{ URL::to($sevenCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="#">
+												@if(session()->get('lang')== 'English')
+													{{ $sevenCategoryPostsBig->title_en }}
+												@else
+													{{ $sevenCategoryPostsBig->title_bn }}
+												@endif
+											</a> </h4>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										@foreach($sevenCategoryPostsSmall as $row)
+											<div class="image-title">
+												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="#">
+													@if(session()->get('lang')== 'English')
+												   		{{ $row->title_en }}
+													@else
+														{{ $row->title_bn }}
+													@endif
+												</a> </h4>
+											</div>
+										@endforeach
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-							</div>
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-							</div>
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-							</div>
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-							</div>
-							<div class="image-title">
-								<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-								<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+						<div class="col-md-6 col-sm-6">
+							<div class="bg-one">
+								<div class="cetagory-title-02"><a href="#">@if(session()->get('lang')== 'English')
+									  		{{ $eightCategory->name_en }}
+										@else
+											{{ $eightCategory->name_bn }}
+										@endif
+									  <i class="fa fa-angle-right" aria-hidden="true"></i><span>
+											@if(session()->get('lang')== 'English')
+										   		More
+											@else
+												আরও
+											@endif
+										<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+										</span></a></div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="top-news">
+											<a href="#"><img src="{{ URL::to($eightCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="#">
+												@if(session()->get('lang')== 'English')
+													{{ $eightCategoryPostsBig->title_en }}
+												@else
+													{{ $eightCategoryPostsBig->title_bn }}
+												@endif
+											</a> </h4>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										@foreach($eightCategoryPostsSmall as $row)
+											<div class="image-title">
+												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="#">
+													@if(session()->get('lang')== 'English')
+												   		{{ $row->title_en }}
+													@else
+														{{ $row->title_bn }}
+													@endif
+												</a> </h4>
+											</div>
+										@endforeach
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -394,44 +506,95 @@
 					<br />
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="cetagory-title-02"><a href="#">সারাদেশে  <i class="fa fa-angle-right" aria-hidden="true"></i> <span><i class="fa fa-plus" aria-hidden="true"></i> সব খবর  </span></a></div>
+							<div class="cetagory-title-02"><a href="#">
+									@if(session()->get('lang')== 'English')
+								   		Country
+									@else
+										সারাদেশে
+									@endif
+								  <i class="fa fa-angle-right" aria-hidden="true"></i> <span><i class="fa fa-plus" aria-hidden="true"></i> 
+									@if(session()->get('lang')== 'English')
+								   		All News
+									@else
+										সব খবর
+									@endif
+								    </span></a></div>
+								    <div class="row">
+								    	<div class="col-md-8 col-lg-8">
+								    		<form action="">
+								    			<div class="row">
+								    				<div class="col-sm-5 col-md-5 col-lg-5">
+								    					<input type="text" class="form-control" placeholder="Division">
+								    				</div>
+								    				<div class="col-sm-5 col-md-5 col-lg-5">
+								    					<input type="text" class="form-control" placeholder="District">
+								    				</div>
+								    				<div class="col-sm-2 col-md-2 col-lg-">
+								    					<button type="submit" class="btn btn-sm btn-info">
+								    						@if(session()->get('lang')== 'English')
+								    					   		Search
+								    						@else
+								    							খুজুন
+								    						@endif
+								    					
+								    					</button>
+								    				</div>
+								    			</div>
+
+								    		</form>
+								    	</div>
+								    	<div class="col-md-4 col-lg-4">
+								    		
+								    	</div>
+								    </div>
 						</div>
 						<div class="col-md-4 col-sm-4">
 							<div class="bg-gray">
 								<div class="top-news">
-									<a href="#"><img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
+									<a href="#"><img src="{{ asset($countryBig->image)}}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="#">
+									@if(session()->get('lang')== 'English')
+								   		{{ $countryBig->title_en }}
+									@else
+										{{ $countryBig->title_bn }}
+									@endif
+								</a> </h4>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
+							@foreach($countryFirstSection as $row)
+								<div class="news-title">
+									<a href="#">
+										@if(session()->get('lang')== 'English')
+									   		{{ $row->title_en }}
+										@else
+											{{ $row->title_bn }}
+										@endif
+									</a>
+								</div>
+							@endforeach
 						</div>
 						<div class="col-md-4 col-sm-4">
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
-							<div class="news-title">
-								<a href="#">রোহিঙ্গা সংকট নিয়ে দ্বিচারিতা সহ্য করা হবে না : কাদের</a>
-							</div>
+							@foreach($countrySecondSection as $row)
+								<div class="news-title">
+									<a href="#">
+										@if(session()->get('lang')== 'English')
+									   		{{ $row->title_en }}
+										@else
+											{{ $row->title_bn }}
+										@endif
+									</a>
+								</div>
+							@endforeach
+							
 						</div>
 					</div>
 					
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="sidebar-add">
-								<img src="assets/img/top-ad.jpg" alt="" />
+								<img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" />
 							</div>
 						</div>
 					</div><!-- /.add-close -->	
@@ -442,86 +605,75 @@
 					<div class="tab-header">
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs nav-justified" role="tablist">
-							<li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" role="tab" data-toggle="tab" aria-expanded="false">সর্বশেষ</a></li>
-							<li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab" data-toggle="tab" aria-expanded="true">জনপ্রিয়</a></li>
-							<li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab" data-toggle="tab" aria-expanded="true">জনপ্রিয়1</a></li>
+							<li role="presentation" class="active"><a href="#tab21" aria-controls="tab21" role="tab" data-toggle="tab" aria-expanded="false">
+								@if(session()->get('lang')== 'English')
+							   		Latest
+								@else
+									সর্বশেষ
+								@endif
+							</a></li>
+							<li role="presentation" ><a href="#tab22" aria-controls="tab22" role="tab" data-toggle="tab" aria-expanded="true">
+								@if(session()->get('lang')== 'English')
+								   	Popular
+								@else
+									জনপ্রিয়
+								@endif
+								
+							</a></li>
+							<li role="presentation" ><a href="#tab23" aria-controls="tab23" role="tab" data-toggle="tab" aria-expanded="true">
+								@if(session()->get('lang')== 'English')
+								   	Highly Read
+								@else
+									সর্বোচ্চ পঠিত
+								@endif
+							</a></li>
 						</ul>
 
 						<!-- Tab panes -->
 						<div class="tab-content ">
 							<div role="tabpanel" class="tab-pane in active" id="tab21">
 								<div class="news-titletab">
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
+									@foreach($latest as $row)
+										<div class="news-title-02">
+											<h4 class="heading-03"><a href="#">
+												@if(session()->get('lang')== 'English')
+											   		{{ $row->title_en }}
+												@else
+													{{ $row->title_bn }}
+												@endif
+											</a> </h4>
+										</div>
+									@endforeach
 								</div>
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="tab22">
 								<div class="news-titletab">
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
+									@foreach($popular as $row)
+										<div class="news-title-02">
+											<h4 class="heading-03"><a href="#">
+												@if(session()->get('lang')== 'English')
+											   		{{ $row->title_en }}
+												@else
+													{{ $row->title_bn }}
+												@endif
+											</a> </h4>
+										</div>
+									@endforeach
 								</div>                                          
 							</div>
 							<div role="tabpanel" class="tab-pane fade" id="tab23">	
 								<div class="news-titletab">
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
-									<div class="news-title-02">
-										<h4 class="heading-03"><a href="#">লালমনিরহাটে আওয়ামী লীগ কার্যালয়ে ভাঙচুর</a> </h4>
-									</div>
+									@foreach($highlyread as $row)
+										<div class="news-title-02">
+											<h4 class="heading-03"><a href="#">
+												@if(session()->get('lang')== 'English')
+											   		{{ $row->title_en }}
+												@else
+													{{ $row->title_bn }}
+												@endif
+											</a> </h4>
+										</div>
+									@endforeach
 								</div>						                                          
 							</div>
 						</div>
@@ -696,53 +848,38 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-8 col-sm-7">
-					<div class="gallery_cetagory-title"> Photo Gallery </div>
+					<div class="gallery_cetagory-title">
+						@if(session()->get('lang') == "English")
+						 	Photo Gallery
+						 @else
+						 	ফটো গ্যালারি
+						 @endif
+					</div>
 
 					<div class="row">
 	                    <div class="col-md-8 col-sm-8">
 	                        <div class="photo_screen">
 	                            <div class="myPhotos" style="width:100%">
-                                      <img src="{{ asset('frontend/assets/img/news.jpg')}}"  alt="Avatar">
+                                      <img src="{{ asset($photoBig->photo)}}"  alt="Avatar">
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <div class="col-md-4 col-sm-4">
 	                        <div class="photo_list_bg">
 	                            
-	                            <div class="photo_img photo_border active">
-	                                <img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="image" onclick="currentDiv(1)">
-	                                <div class="heading-03">
-	                                    ভারতে সিনেমা হলে জাতীয় সঙ্গীত বাজানো আর বাধ্যতামূলক নয়।
-	                                </div>
-	                            </div>
+	                            @foreach($photoSmall as $row)
+	                            	<div class="photo_img photo_border active">
+	                            	    <img src="{{ asset($row->photo)}}" alt="image" onclick="currentDiv(1)">
+	                            	    <div class="heading-03">
+	                            	        @if(session()->get('lang') == "English")
+	                            	         	{{ $row->title_en }}
+	                            	         @else
+	                            	         	{{ $row->title_bn }}
+	                            	         @endif
+	                            	    </div>
+	                            	</div>
 
-	                            <div class="photo_img photo_border">
-	                                <img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="image" onclick="currentDiv(1)">
-	                                <div class="heading-03">
-	                                    ভারতে সিনেমা হলে জাতীয় সঙ্গীত বাজানো আর বাধ্যতামূলক নয়।
-	                                </div>
-	                            </div>
-
-	                            <div class="photo_img photo_border">
-	                                <img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="image" onclick="currentDiv(1)">
-	                                <div class="heading-03">
-	                                    ভারতে সিনেমা হলে জাতীয় সঙ্গীত বাজানো আর বাধ্যতামূলক নয়।
-	                                </div>
-	                            </div>
-
-	                            <div class="photo_img photo_border">
-	                                <img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="image" onclick="currentDiv(1)">
-	                                <div class="heading-03">
-	                                    ভারতে সিনেমা হলে জাতীয় সঙ্গীত বাজানো আর বাধ্যতামূলক নয়।
-	                                </div>
-	                            </div>
-
-	                            <div class="photo_img photo_border">
-	                                <img src="{{ asset('frontend/assets/img/news.jpg')}}" alt="image" onclick="currentDiv(1)">
-	                                <div class="heading-03">
-	                                    ভারতে সিনেমা হলে জাতীয় সঙ্গীত বাজানো আর বাধ্যতামূলক নয়।
-	                                </div>
-	                            </div>
+	                            @endforeach
 
 	                        </div>
 	                    </div>
@@ -787,15 +924,23 @@
 
 				</div>
 				<div class="col-md-4 col-sm-5">
-					<div class="gallery_cetagory-title"> photo Gallery </div>
+					<div class="gallery_cetagory-title">
+
+						 @if(session()->get('lang') == "English")
+						 	Video Gallery
+						 @else
+						 	ভিডিও গ্যালারি
+						 @endif
+					 
+					</div>
 
 					<div class="row">
                         <div class="col-md-12 col-sm-12">
                             <div class="video_screen">
                                 <div class="myVideos" style="width:100%">
                                     <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
-                                    <iframe width="853" height="480" src="https://www.youtube.com/embed/AWM8164ksVY?list=RDAWM8164ksVY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
+                                    <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ $videoBig->embed_code }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                	</div>
                                 </div>
                             </div>
                         </div>
@@ -805,43 +950,15 @@
                         <div class="col-md-12">
                         
                             <div class="gallery_sec owl-carousel">
-
-                                <div class="video_image" style="width:100%" onclick="currentDivs(1)">
-                                    <img src="{{ asset('frontend/assets/img/news.jpg')}}"  alt="Avatar">
-                                    <div class="heading-03">
-                                        <div class="content_padding">
-                                            রোহিঙ্গা সংকট আবাদে লাভবান কৃষকেরা   
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="video_image" style="width:100%" onclick="currentDivs(1)">
-                                    <img src="{{ asset('frontend/assets/img/news.jpg')}}"  alt="Avatar">
-                                    <div class="heading-03">
-                                        <div class="content_padding">
-                                            রোহিঙ্গা সংকট আবাদে লাভবান কৃষকেরা   
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="video_image" style="width:100%" onclick="currentDivs(1)">
-                                    <img src="{{ asset('frontend/assets/img/news.jpg')}}"  alt="Avatar">
-                                    <div class="heading-03">
-                                        <div class="content_padding">
-                                            রোহিঙ্গা সংকট আবাদে লাভবান কৃষকেরা   
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="video_image" style="width:100%" onclick="currentDivs(1)">
-                                    <img src="{{ asset('frontend/assets/img/news.jpg')}}"  alt="Avatar">
-                                    <div class="heading-03">
-                                        <div class="content_padding">
-                                            রোহিঙ্গা সংকট আবাদে লাভবান কৃষকেরা   
-                                        </div>
-                                    </div>
-                                </div>
-
+								@foreach($videoSmall as $row)
+	                                <div class="video_image" style="width:100%" onclick="currentDivs(1)">
+										
+										    <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
+										    <iframe width="200" height="140" src="https://www.youtube.com/embed/{{ $row->embed_code }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</div>
+										
+	                                </div>
+								@endforeach
                             </div>
                         </div>
                     </div>
