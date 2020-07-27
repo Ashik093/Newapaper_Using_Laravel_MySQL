@@ -44,6 +44,7 @@
         <meta name="description" content="{{ $seo->meta_description_en }}">
         <meta name="google-verification" content="{{ $seo->google_verifications }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        @yield('meta')
      
         <title>NEWSPAPER</title>
 

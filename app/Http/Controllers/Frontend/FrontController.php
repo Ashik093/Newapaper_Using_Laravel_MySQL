@@ -65,4 +65,16 @@ class FrontController extends Controller
 
     	return view('frontend.index',compact('livetv','prayer','websites','postbig','postsmalls','firstCategory','secondCategory','firstCategoryPostsBig','secondCategoryPostsBig','firstCategoryPostsSmall','secondCategoryPostsSmall','thirdCategory','thirdCategoryPostsBig','thirdCategoryPostsSmall','fourthCategory','fourthCategoryPostsBig','fourthCategoryPostsSmall','fifthCategory','fifthCategoryPostsBig','fifthCategoryPostsSmall','sixCategory','sixCategoryPostsBig','sixCategoryPostsSmall','sevenCategory','sevenCategoryPostsBig','sevenCategoryPostsSmall','eightCategory','eightCategoryPostsBig','eightCategoryPostsSmall','countryBig','countryFirstSection','countrySecondSection','videoBig','videoSmall','photoBig','photoSmall','latest','popular','highlyread'));
     }
+
+    public function singlePost($id,$slug)
+    {
+        $post = Post::find($id);
+        $relatedPost = Post::where('id','!=',$post->id)->where('category_id',$post->category_id)->orderBy('id','DESC')->limit(6)->get();
+
+        $latest = Post::orderBy('id','DESC')->limit(8)->get();
+        $popular = Post::inRandomOrder()->orderBy('id','DESC')->limit(8)->get();
+        $highlyread = Post::inRandomOrder()->orderBy('id','ASC')->limit(8)->get();
+
+        return view('frontend.singlepost',compact('post','relatedPost','latest','popular','highlyread'));
+    }
 }

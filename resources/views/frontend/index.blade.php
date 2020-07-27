@@ -7,11 +7,18 @@
 				<div class="col-md-9 col-sm-8">
 					<div class="row">
 						<div class="col-md-1 col-sm-1 col-lg-1"></div>
+						@php
+							if (session()->get('lang')=='English') {
+								$slug = preg_replace('/\s+/u','-',trim($postbig->title_en));
+							}else{
+								$slug = preg_replace('/\s+/u','-',trim($postbig->title_bn));
+							}
+						@endphp
 						<div class="col-md-10 col-sm-10">
 							<div class="lead-news">
-								<div class="service-img"><a href="#"><img src="{{ URL::to($postbig->image) }}" alt="Notebook"></a></div>
+								<div class="service-img"><a href="{{ URL::to('/view-post/'.$postbig->id.'/'.$slug) }}"><img src="{{ URL::to($postbig->image) }}" alt="Notebook"></a></div>
 								<div class="content">
-								<h4 class="lead-heading-01"><a href="#">
+								<h4 class="lead-heading-01"><a href="{{ URL::to('/view-post/'.$postbig->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 									   		{{ $postbig->title_en }}
 										@else
@@ -26,10 +33,17 @@
 						<div class="row">
 								
 								@foreach($postsmalls as $postsmall)
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($postsmall->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($postsmall->title_bn));
+										}
+									@endphp
 									<div class="col-md-3 col-sm-3">
 										<div class="top-news">
-											<a href="#"><img src="{{ URL::to($postsmall->image) }}" alt="Notebook"></a>
-											<h4 class="heading-02"><a href="#">
+											<a href="{{ URL::to('/view-post/'.$postsmall->id.'/'.$slug) }}"><img src="{{ URL::to($postsmall->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$postsmall->id.'/'.$slug) }}">
 													@if(session()->get('lang')== 'English')
 												   		{{ $postsmall->title_en }}
 													@else

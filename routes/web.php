@@ -11,6 +11,11 @@ Route::get('/english','Frontend\LanguageController@english')->name('english');
 
 
 
+//single post 
+Route::get('/view-post/{id}/{slug}','Frontend\FrontController@singlePost');
+
+
+
 //default
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
