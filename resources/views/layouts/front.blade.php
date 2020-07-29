@@ -5,6 +5,9 @@
     $social = App\Model\Social::first();
     $headlines = App\Model\Post::where('headline',1)->orderBy('id','DESC')->get();
     $notice = App\Model\Notice::first();
+
+    $horizontal1 = DB::table('ads')->first();
+    
 @endphp
  @php
     function bn_date($str)
@@ -64,7 +67,7 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-2 col-sm-4">
 					<div class="header_logo">
-						<a href=""><img src="{{ asset('frontend/assets/img/demo_logo.png') }}"></a> 
+						<a href="{{ route('/') }}"><img src="{{ asset('frontend/assets/img/demo_logo.png') }}"></a> 
 					</div>
 				</div>              
 				<div class="col-xs-6 col-md-8 col-sm-8">
@@ -94,8 +97,15 @@
 												</a>
 												<ul class="dropdown-menu">
 													@foreach($subcategories as $subcategory)
+														@php
+															if (session()->get('lang')=='English') {
+																$slug = preg_replace('/\s+/u','-',trim($subcategory->name_en));
+															}else{
+																$slug = preg_replace('/\s+/u','-',trim($subcategory->name_bn));
+															}
+														@endphp
 														@if($category->id == $subcategory->category_id)
-															<li><a href="#">
+															<li><a href="{{ URL::to('/view-all-post/'.$category->id.'/'.$subcategory->id.'/'.$slug) }}">
 																@if(session()->get('lang') == 'English')
 																	{{ $subcategory->name_en }}
 																@else
@@ -183,7 +193,9 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 					<div class="top-add">
-						<img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt=""/>
+						@if($horizontal1)
+							<a href="{{ $horizontal1->link}}"><img src="{{asset($horizontal1->ads)}}" alt=""/></a>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -380,5 +392,28 @@
 		<script src="{{ asset('frontend/assets/js/bootstrap.min.js')}}"></script>
 		<script src="{{ asset('frontend/assets/js/main.js')}}"></script>
 		<script src="{{ asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('select[name="division_id"]').on('change',function(){
+      var division_id = $(this).val();
+      if (division_id) {
+        $.ajax({
+          url:"{{ url('/get/district/') }}/"+division_id,
+          type:"GET",
+          dataType:"json",
+          success:function(data){
+            $("#district_id").empty();  
+            $("#district_id").append('<option selected="selected" disabled="">==Chose One==</option>');
+            $.each(data,function(key,value){
+              $("#district_id").append('<option value="'+value.id+'"">'+value.name_en+' | '+value.name_bn+'</option>');
+            });
+            //console.log(data)
+          }
+        });
+      }
+    });
+  });
+</script>
 	</body>
 </html> 

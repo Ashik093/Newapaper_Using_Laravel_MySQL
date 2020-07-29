@@ -13,7 +13,12 @@ Route::get('/english','Frontend\LanguageController@english')->name('english');
 
 //single post 
 Route::get('/view-post/{id}/{slug}','Frontend\FrontController@singlePost');
+Route::get('/view-all-post/{category_id}/{subcategory_id}/{slug}','Frontend\FrontController@allPost');
 
+Route::get('/search-news','Frontend\FrontController@searchNews')->name('search.news');
+
+//multiple dependency
+Route::get('get/district/{division_id}','Frontend\FrontController@getDistrict');
 
 
 //default
@@ -134,5 +139,13 @@ Route::prefix('/admin')->group(function () {
     Route::get('/delete/video/gallery/{id}','Backend\VideoController@delete')->name('video.gallery.delete');
     Route::get('/edit/video/gallery/{id}','Backend\VideoController@edit')->name('video.gallery.edit');
     Route::post('/update/video/gallery/{id}','Backend\VideoController@update')->name('update.video');
+
+    //video gallery start
+    Route::get('/add/ads','Backend\AdController@create')->name('add.ads');
+    Route::get('/all/ads','Backend\AdController@index')->name('all.ads');
+    Route::post('/store/ads','Backend\AdController@store')->name('store.ads');
+    Route::get('/delete/ads/{id}','Backend\AdController@delete')->name('delete.ads');
+    Route::get('/edit/ads/{id}','Backend\AdController@edit')->name('edit.ads');
+    Route::post('/update/ads/{id}','Backend\AdController@update')->name('update.ads');
 
 });

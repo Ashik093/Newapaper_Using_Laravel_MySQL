@@ -8,9 +8,12 @@ use App\Model\Livetv;
 use App\Model\Prayer;
 use App\Model\Website;
 use App\Model\Category;
+use App\Model\Subcategory;
 use App\Model\Post;
 use App\Model\Video;
 use App\Model\Photo;
+use App\Model\District;
+use App\Model\Division;
 
 class FrontController extends Controller
 {
@@ -20,7 +23,7 @@ class FrontController extends Controller
     	$prayer = Prayer::first();
     	$websites = Website::all();
     	$postbig = Post::where('first_section_thumbnail',1)->orderBy('id','DESC')->first();
-    	$postsmalls = Post::where('first_section',1)->orderBy('id','DESC')->get();
+    	$postsmalls = Post::where('first_section',1)->orderBy('id','DESC')->limit(8)->get();
 
     	$firstCategory = Category::first();
     	$secondCategory = Category::skip(1)->first();
@@ -76,5 +79,43 @@ class FrontController extends Controller
         $highlyread = Post::inRandomOrder()->orderBy('id','ASC')->limit(8)->get();
 
         return view('frontend.singlepost',compact('post','relatedPost','latest','popular','highlyread'));
+    }
+
+    public function allPost($category_id,$subcategory_id,$slug)
+    {
+        $posts = Post::where('category_id',$category_id)->where('subcategory_id',$subcategory_id)->orderBy('id','DESC')->paginate(15);
+
+        $category = Category::find($category_id);
+        $subcategory = Subcategory::find($subcategory_id);
+        
+        $latest = Post::orderBy('id','DESC')->limit(8)->get();
+        $popular = Post::inRandomOrder()->orderBy('id','DESC')->limit(8)->get();
+        $highlyread = Post::inRandomOrder()->orderBy('id','ASC')->limit(8)->get();
+
+        return view('frontend.allpost',compact('posts','category','subcategory','latest','popular','highlyread'));
+    }
+
+    public function getDistrict($id)
+    {
+        $districts = District::where('soft_delete',0)->where('division_id',$id)->get();
+        return response()->json($districts);
+    }
+
+    public function searchNews(Request $request)
+    {
+        $division_id = $request->division_id;
+        $district_id = $request->district_id;
+
+        $category = Division::find($division_id);
+        $subcategory = District::find($district_id);
+
+        $posts = Post::where('division_id',$division_id)->where('district_id',$district_id)->orderBy('id','DESC')->paginate(15);
+
+        $latest = Post::orderBy('id','DESC')->limit(8)->get();
+        $popular = Post::inRandomOrder()->orderBy('id','DESC')->limit(8)->get();
+        $highlyread = Post::inRandomOrder()->orderBy('id','ASC')->limit(8)->get();
+
+        return view('frontend.allpost',compact('posts','category','subcategory','latest','popular','highlyread'));
+
     }
 }

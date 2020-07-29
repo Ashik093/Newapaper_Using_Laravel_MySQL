@@ -170,7 +170,16 @@
 				<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add"><img src="{{asset('frontend/assets/img/add_01.jpg')}}" alt="" /></div>
+							<div class="sidebar-add">
+								@php
+									$vertical1 = DB::table('ads')->where('type',1)->first();
+									$vertical2 = DB::table('ads')->where('type',1)->skip(1)->first();
+								@endphp
+								@if($vertical1)
+									<a href="{{ $vertical1->link }}"><img src="{{asset($vertical1->ads)}}" alt=""/></a>
+								@endif
+								
+							</div>
 						</div>
 					</div><!-- /.add-close -->
 					<div class="tab-header">
@@ -273,7 +282,12 @@
 				<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add"><img src="{{asset('frontend/assets/img/add_01.jpg')}}" alt="" /></div>
+							<div class="sidebar-add">
+								@if($vertical2)
+									<a href="{{ $vertical2->link }}"><img src="{{asset($vertical2->ads)}}" alt=""/></a>
+								@endif
+								
+							</div>
 						</div>
 					</div><!-- /.add-close -->
 			</div>

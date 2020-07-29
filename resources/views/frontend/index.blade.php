@@ -1,5 +1,13 @@
 @extends('layouts.front')
 @section('content')
+@php
+	$horizontal2 = DB::table('ads')->where('type',0)->skip(1)->first();
+	$horizontal3 = DB::table('ads')->where('type',0)->skip(2)->first();
+	$horizontal4 = DB::table('ads')->where('type',0)->skip(3)->first();
+	$horizontal5 = DB::table('ads')->where('type',0)->skip(4)->first();
+
+	$vertical1 = DB::table('ads')->where('type',1)->first();
+@endphp
 	<!-- 1st-news-section-start -->	
 	<section class="news-section">
 		<div class="container-fluid">
@@ -58,7 +66,12 @@
 					<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="add"><img src="{{ asset('frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+							<div class="add">
+								@if($horizontal2)
+									<a href="{{ $horizontal2->link }}"><img src="{{asset($horizontal2->ads)}}" alt=""/></a>
+								@endif
+								
+							</div>
 						</div>
 					</div><!-- /.add-close -->	
 					
@@ -87,9 +100,16 @@
 								</div>
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($firstCategoryPostsBig->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($firstCategoryPostsBig->title_bn));
+											}
+										@endphp
 										<div class="top-news">
-											<a href="#"><img src="{{ URL::to($firstCategoryPostsBig->image) }}" alt="Notebook"></a>
-											<h4 class="heading-02"><a href="#">
+											<a href="{{ URL::to('/view-post/'.$firstCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($firstCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$firstCategoryPostsBig->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 											   		{{ $firstCategoryPostsBig->title_en }}
 												@else
@@ -100,9 +120,16 @@
 									</div>
 									<div class="col-md-6 col-sm-6">
 										@foreach($firstCategoryPostsSmall as $row)
+											@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+											}
+										@endphp
 											<div class="image-title">
-												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-												<h4 class="heading-03"><a href="#">
+												<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 													@if(session()->get('lang')== 'English')
 												   		{{ $row->title_en }}
 													@else
@@ -137,9 +164,16 @@
 								</div>
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($secondCategoryPostsBig->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($secondCategoryPostsBig->title_bn));
+											}
+										@endphp
 										<div class="top-news">
-											<a href="#"><img src="{{ URL::to($secondCategoryPostsBig->image) }}" alt="Notebook"></a>
-											<h4 class="heading-02"><a href="#">
+											<a href="{{ URL::to('/view-post/'.$secondCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($secondCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$secondCategoryPostsBig->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 											   		{{ $secondCategoryPostsBig->title_en }}
 												@else
@@ -150,9 +184,16 @@
 									</div>
 									<div class="col-md-6 col-sm-6">
 										@foreach($secondCategoryPostsSmall as $row)
+											@php
+												if (session()->get('lang')=='English') {
+													$slug = preg_replace('/\s+/u','-',trim($secondCategoryPostsBig->title_en));
+												}else{
+													$slug = preg_replace('/\s+/u','-',trim($secondCategoryPostsBig->title_bn));
+												}
+											@endphp
 											<div class="image-title">
-												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-												<h4 class="heading-03"><a href="#">
+												<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 													@if(session()->get('lang')== 'English')
 												   		{{ $row->title_en }}
 													@else
@@ -171,7 +212,12 @@
 					<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add"><img src="{{ asset('frontend/assets/img/add_01.jpg') }}" alt="" /></div>
+							<div class="sidebar-add">
+								@if($vertical1)
+									<a href="{{ $vertical1->link }}"><img src="{{asset($vertical1->ads)}}" alt=""/></a>
+								@endif
+								
+							</div>
 						</div>
 					</div><!-- /.add-close -->	
 					
@@ -409,10 +455,20 @@
 			<!-- add-start -->	
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" /></div>
+					<div class="add">
+						@if($horizontal3)
+							<a href="{{ $horizontal3->link }}"><img src="{{asset($horizontal3->ads)}}" alt=""/></a>
+						@endif
+						
+					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" /></div>
+					<div class="add">
+						@if($horizontal4)
+							<a href="{{ $horizontal4->link }}"><img src="{{asset($horizontal4->ads)}}" alt=""/></a>
+						@endif
+						
+					</div>
 				</div>
 			</div><!-- /.add-close -->	
 			
@@ -535,13 +591,24 @@
 								    </span></a></div>
 								    <div class="row">
 								    	<div class="col-md-8 col-lg-8">
-								    		<form action="">
+								    		@php
+								    			$divisions = DB::table('divisions')->get();
+								    		@endphp
+								    		<form action="{{ route('search.news') }}" method="get">
+								    			@csrf
 								    			<div class="row">
 								    				<div class="col-sm-5 col-md-5 col-lg-5">
-								    					<input type="text" class="form-control" placeholder="Division">
+								    					<select class="form-control" name="division_id" id="division_id" required="">
+								    						<option selected="" disabled="">Choose One</option>
+								    						@foreach($divisions as $row)
+																<option value="{{ $row->id }}">{{ $row->name_en }}|{{ $row->name_bn }}</option>
+								    						@endforeach
+								    					</select>
 								    				</div>
 								    				<div class="col-sm-5 col-md-5 col-lg-5">
-								    					<input type="text" class="form-control" placeholder="District">
+								    					<select class="form-control" name="district_id" id="district_id" required="">
+								    						<option selected="" disabled="">Choose One</option>
+								    					</select>
 								    				</div>
 								    				<div class="col-sm-2 col-md-2 col-lg-">
 								    					<button type="submit" class="btn btn-sm btn-info">
@@ -608,7 +675,10 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="sidebar-add">
-								<img src="{{asset('frontend/assets/img/top-ad.jpg')}}" alt="" />
+								@if($horizontal5)
+									<a href="{{ $horizontal5->link }}"><img src="{{asset($horizontal5->ads)}}" alt=""/></a>
+								@endif
+								
 							</div>
 						</div>
 					</div><!-- /.add-close -->	
