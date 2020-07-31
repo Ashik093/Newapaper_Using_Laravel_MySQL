@@ -7,6 +7,8 @@
     $notice = App\Model\Notice::first();
 
     $horizontal1 = DB::table('ads')->first();
+
+    $system = DB::table('settings')->first();
     
 @endphp
  @php
@@ -67,7 +69,7 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-2 col-sm-4">
 					<div class="header_logo">
-						<a href="{{ route('/') }}"><img src="{{ asset('frontend/assets/img/demo_logo.png') }}"></a> 
+						<a href="{{ route('/') }}"><img src="{{ asset($system->logo) }}" style="height: 60px;"></a> 
 					</div>
 				</div>              
 				<div class="col-xs-6 col-md-8 col-sm-8">
@@ -311,26 +313,26 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-4">
 						<div class="foot-logo">
-							<img src="{{asset('frontend/assets/img/demo_logo.png')}}" style="height: 50px;" />
+							<img src="{{asset($system->logo)}}" style="height: 50px;" />
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-4">
 						 <div class="social">
                             <ul>
-                                <li><a href="" target="_blank" class="facebook"> <i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" target="_blank" class="twitter"> <i class="fa fa-twitter"></i></a></li>
-                                <li><a href="" target="_blank" class="instagram"> <i class="fa fa-instagram"></i></a></li>
-                                <li><a href="" target="_blank" class="android"> <i class="fa fa-android"></i></a></li>
-                                <li><a href="" target="_blank" class="linkedin"> <i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="" target="_blank" class="youtube"> <i class="fa fa-youtube"></i></a></li>
+                                <li><a href="{{ $social->facebook }}" target="_blank" class="facebook"> <i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{ $social->tweter }}" target="_blank" class="twitter"> <i class="fa fa-twitter"></i></a></li>
+                                <li><a href="{{ $social->instagram }}" target="_blank" class="instagram"> <i class="fa fa-instagram"></i></a></li>
+                               {{--  <li><a href="{{ $social->facebook }}" target="_blank" class="android"> <i class="fa fa-android"></i></a></li> --}}
+                                {{-- <li><a href="{{ $social->linkedin }}" target="_blank" class="linkedin"> <i class="fa fa-linkedin"></i></a></li> --}}
+                                <li><a href="{{ $social->youtube }}" target="_blank" class="youtube"> <i class="fa fa-youtube"></i></a></li>
                             </ul>
                         </div>
 					</div>
 					<div class="col-md-3 col-sm-4">
 						<div class="apps-img">
 							<ul>
-								<li><a href="#"><img src="assets/img/apps-01.png" alt="" /></a></li>
-								<li><a href="#"><img src="assets/img/apps-02.png" alt="" /></a></li>
+								<li><a href="#"><img src="{{asset('frontend/assets/img/apps-01.png')}}" alt="" /></a></li>
+								<li><a href="#"><img src="{{asset('frontend/assets/img/apps-02.png')}}" alt="" /></a></li>
 							</ul>
 						</div>
 					</div>
@@ -345,17 +347,25 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-one">
-						Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						@if(session()->get('lang')== 'English')
+					   		 {{ $system->address_en }} 
+						@else
+							 {{ $system->address_bn }} 
+						@endif 
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-two">
-					Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						<img src="{{asset($system->logo)}}" style="height: 50px;" />
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4">
 					<div class="editor-three">
-						Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is 
+						@if(session()->get('lang')== 'English')
+					   		 {{ $system->phone_en }} 
+						@else
+							 {{ $system->phone_bn }} 
+						@endif 
 					</div>
 				</div>
 			</div>
@@ -368,15 +378,15 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
 					<div class="copyright">						
-						All rights reserved © 2020 LearnHunter
+						All rights reserved © 2020 <a href="https://the-ashikur.com/">the-ashikur.com</a>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
 					<div class="btm-foot-menu">
-						<ul>
+						{{-- <ul>
 							<li><a href="#">About US</a></li>
 							<li><a href="#">Contact US</a></li>
-						</ul>
+						</ul> --}}
 					</div>
 				</div>
 			</div>

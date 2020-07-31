@@ -58,9 +58,9 @@
 
              	 			<div class="form-group">
 								<label>Youtube</label>
-								<input type="text" name="instagram" id="instagram" class="form-control @error('instagram') is-invalid @enderror" value="{{ $social->youtube }}">
+								<input type="text" name="youtube" id="youtube" class="form-control @error('youtube') is-invalid @enderror" value="{{ $social->youtube }}">
 							</div>
-							@error('instagram')
+							@error('youtube')
              	      			<div class="alert alert-danger">{{ $message }}</div>
              	 			@enderror
 							

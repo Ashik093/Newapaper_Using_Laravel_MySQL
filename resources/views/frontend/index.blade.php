@@ -7,6 +7,7 @@
 	$horizontal5 = DB::table('ads')->where('type',0)->skip(4)->first();
 
 	$vertical1 = DB::table('ads')->where('type',1)->first();
+	$vertical2 = DB::table('ads')->where('type',1)->skip(1)->first();
 @endphp
 	<!-- 1st-news-section-start -->	
 	<section class="news-section">
@@ -238,16 +239,26 @@
 					</div><!-- /.youtube-live-close -->	
 					
 					<!-- facebook-page-start -->
-					<div class="cetagory-title-03">ফেসবুকে আমরা</div>
+					<div class="cetagory-title-03">
+							@if(session()->get('lang')== 'English')
+						   		Facebook Page
+							@else
+								ফেসবুকে আমরা
+							@endif
+						
+					</div>
 					<div class="fb-root">
-						facebook page here
+						<div class="fb-page" data-href="https://web.facebook.com/narsingdi24" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/narsingdi24" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/narsingdi24">নরসিংদী সংবাদ 24/ Narsingdir News 24</a></blockquote></div>
 					</div><!-- /.facebook-page-close -->	
-					
+					<div id="fb-root"></div>
+					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="uJhFBdHs"></script>
 					<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="sidebar-add">
-								<img src="{{ asset('frontend/assets/img/add_01.jpg') }}" alt="" />
+								@if($vertical2)
+									<a href="{{ $vertical2->link }}"><img src="{{asset($vertical2->ads)}}" alt=""/></a>
+								@endif
 							</div>
 						</div>
 					</div><!-- /.add-close -->	
@@ -281,9 +292,16 @@
 						</div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
+								@php
+									if (session()->get('lang')=='English') {
+										$slug = preg_replace('/\s+/u','-',trim($thirdCategoryPostsBig->title_en));
+									}else{
+										$slug = preg_replace('/\s+/u','-',trim($thirdCategoryPostsBig->title_bn));
+									}
+								@endphp
 								<div class="top-news">
-									<a href="#"><img src="{{ URL::to($thirdCategoryPostsBig->image) }}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{ URL::to('/view-post/'.$thirdCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($thirdCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$thirdCategoryPostsBig->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 											{{ $thirdCategoryPostsBig->title_en }}
 										@else
@@ -294,9 +312,16 @@
 							</div>
 							<div class="col-md-6 col-sm-6">
 								@foreach($thirdCategoryPostsSmall as $row)
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+										}
+									@endphp
 									<div class="image-title">
-										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-										<h4 class="heading-03"><a href="#">
+										<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 											@if(session()->get('lang')== 'English')
 										   		{{ $row->title_en }}
 											@else
@@ -327,9 +352,16 @@
 								</span></a></div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
+								@php
+									if (session()->get('lang')=='English') {
+										$slug = preg_replace('/\s+/u','-',trim($fourthCategoryPostsBig->title_en));
+									}else{
+										$slug = preg_replace('/\s+/u','-',trim($fourthCategoryPostsBig->title_bn));
+									}
+								@endphp
 								<div class="top-news">
-									<a href="#"><img src="{{ URL::to($fourthCategoryPostsBig->image) }}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{ URL::to('/view-post/'.$fourthCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($fourthCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$fourthCategoryPostsBig->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 											{{ $fourthCategoryPostsBig->title_en }}
 										@else
@@ -340,9 +372,16 @@
 							</div>
 							<div class="col-md-6 col-sm-6">
 								@foreach($fourthCategoryPostsSmall as $row)
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+										}
+									@endphp
 									<div class="image-title">
-										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-										<h4 class="heading-03"><a href="#">
+										<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 											@if(session()->get('lang')== 'English')
 										   		{{ $row->title_en }}
 											@else
@@ -377,9 +416,16 @@
 								</span></a></div>
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
+								@php
+									if (session()->get('lang')=='English') {
+										$slug = preg_replace('/\s+/u','-',trim($fifthCategoryPostsBig->title_en));
+									}else{
+										$slug = preg_replace('/\s+/u','-',trim($fifthCategoryPostsBig->title_bn));
+									}
+								@endphp
 								<div class="top-news">
-									<a href="#"><img src="{{ URL::to($fifthCategoryPostsBig->image) }}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									<a href="{{ URL::to('/view-post/'.$fifthCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($fifthCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$fifthCategoryPostsBig->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 											{{ $fifthCategoryPostsBig->title_en }}
 										@else
@@ -390,9 +436,16 @@
 							</div>
 							<div class="col-md-6 col-sm-6">
 								@foreach($fifthCategoryPostsSmall as $row)
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+										}
+									@endphp
 									<div class="image-title">
-										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-										<h4 class="heading-03"><a href="#">
+										<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 											@if(session()->get('lang')== 'English')
 										   		{{ $row->title_en }}
 											@else
@@ -423,8 +476,15 @@
 						<div class="row">
 							<div class="col-md-6 col-sm-6">
 								<div class="top-news">
-									<a href="#"><img src="{{ URL::to($sixCategoryPostsBig->image) }}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($sixCategoryPostsBig->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($sixCategoryPostsBig->title_bn));
+										}
+									@endphp
+									<a href="{{ URL::to('/view-post/'.$sixCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($sixCategoryPostsBig->image) }}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$sixCategoryPostsBig->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 											{{ $sixCategoryPostsBig->title_en }}
 										@else
@@ -435,9 +495,16 @@
 							</div>
 							<div class="col-md-6 col-sm-6">
 								@foreach($sixCategoryPostsSmall as $row)
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+										}
+									@endphp
 									<div class="image-title">
-										<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-										<h4 class="heading-03"><a href="#">
+										<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+										<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 											@if(session()->get('lang')== 'English')
 										   		{{ $row->title_en }}
 											@else
@@ -498,9 +565,16 @@
 										</span></a></div>
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($sevenCategoryPostsBig->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($sevenCategoryPostsBig->title_bn));
+											}
+										@endphp
 										<div class="top-news">
-											<a href="#"><img src="{{ URL::to($sevenCategoryPostsBig->image) }}" alt="Notebook"></a>
-											<h4 class="heading-02"><a href="#">
+											<a href="{{ URL::to('/view-post/'.$sevenCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($sevenCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$sevenCategoryPostsBig->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 													{{ $sevenCategoryPostsBig->title_en }}
 												@else
@@ -511,9 +585,16 @@
 									</div>
 									<div class="col-md-6 col-sm-6">
 										@foreach($sevenCategoryPostsSmall as $row)
+											@php
+												if (session()->get('lang')=='English') {
+													$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+												}else{
+													$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+												}
+											@endphp
 											<div class="image-title">
-												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-												<h4 class="heading-03"><a href="#">
+												<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 													@if(session()->get('lang')== 'English')
 												   		{{ $row->title_en }}
 													@else
@@ -544,8 +625,15 @@
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="top-news">
-											<a href="#"><img src="{{ URL::to($eightCategoryPostsBig->image) }}" alt="Notebook"></a>
-											<h4 class="heading-02"><a href="#">
+											@php
+												if (session()->get('lang')=='English') {
+													$slug = preg_replace('/\s+/u','-',trim($eightCategoryPostsBig->title_en));
+												}else{
+													$slug = preg_replace('/\s+/u','-',trim($eightCategoryPostsBig->title_bn));
+												}
+											@endphp
+											<a href="{{ URL::to('/view-post/'.$eightCategoryPostsBig->id.'/'.$slug) }}"><img src="{{ URL::to($eightCategoryPostsBig->image) }}" alt="Notebook"></a>
+											<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$eightCategoryPostsBig->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 													{{ $eightCategoryPostsBig->title_en }}
 												@else
@@ -556,9 +644,16 @@
 									</div>
 									<div class="col-md-6 col-sm-6">
 										@foreach($eightCategoryPostsSmall as $row)
+											@php
+												if (session()->get('lang')=='English') {
+													$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+												}else{
+													$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+												}
+											@endphp
 											<div class="image-title">
-												<a href="#"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
-												<h4 class="heading-03"><a href="#">
+												<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}"><img src="{{ URL::to($row->image) }}" alt="Notebook"></a>
+												<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 													@if(session()->get('lang')== 'English')
 												   		{{ $row->title_en }}
 													@else
@@ -632,8 +727,15 @@
 						<div class="col-md-4 col-sm-4">
 							<div class="bg-gray">
 								<div class="top-news">
-									<a href="#"><img src="{{ asset($countryBig->image)}}" alt="Notebook"></a>
-									<h4 class="heading-02"><a href="#">
+									@php
+										if (session()->get('lang')=='English') {
+											$slug = preg_replace('/\s+/u','-',trim($countryBig->title_en));
+										}else{
+											$slug = preg_replace('/\s+/u','-',trim($countryBig->title_bn));
+										}
+									@endphp
+									<a href="{{ URL::to('/view-post/'.$countryBig->id.'/'.$slug) }}"><img src="{{ asset($countryBig->image)}}" alt="Notebook"></a>
+									<h4 class="heading-02"><a href="{{ URL::to('/view-post/'.$countryBig->id.'/'.$slug) }}">
 									@if(session()->get('lang')== 'English')
 								   		{{ $countryBig->title_en }}
 									@else
@@ -645,8 +747,15 @@
 						</div>
 						<div class="col-md-4 col-sm-4">
 							@foreach($countryFirstSection as $row)
+								@php
+									if (session()->get('lang')=='English') {
+										$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+									}else{
+										$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+									}
+								@endphp
 								<div class="news-title">
-									<a href="#">
+									<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 									   		{{ $row->title_en }}
 										@else
@@ -658,8 +767,15 @@
 						</div>
 						<div class="col-md-4 col-sm-4">
 							@foreach($countrySecondSection as $row)
+								@php
+									if (session()->get('lang')=='English') {
+										$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+									}else{
+										$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+									}
+								@endphp
 								<div class="news-title">
-									<a href="#">
+									<a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 										@if(session()->get('lang')== 'English')
 									   		{{ $row->title_en }}
 										@else
@@ -718,8 +834,15 @@
 							<div role="tabpanel" class="tab-pane in active" id="tab21">
 								<div class="news-titletab">
 									@foreach($latest as $row)
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+											}
+										@endphp
 										<div class="news-title-02">
-											<h4 class="heading-03"><a href="#">
+											<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 											   		{{ $row->title_en }}
 												@else
@@ -733,8 +856,15 @@
 							<div role="tabpanel" class="tab-pane fade" id="tab22">
 								<div class="news-titletab">
 									@foreach($popular as $row)
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+											}
+										@endphp
 										<div class="news-title-02">
-											<h4 class="heading-03"><a href="#">
+											<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 											   		{{ $row->title_en }}
 												@else
@@ -748,8 +878,15 @@
 							<div role="tabpanel" class="tab-pane fade" id="tab23">	
 								<div class="news-titletab">
 									@foreach($highlyread as $row)
+										@php
+											if (session()->get('lang')=='English') {
+												$slug = preg_replace('/\s+/u','-',trim($row->title_en));
+											}else{
+												$slug = preg_replace('/\s+/u','-',trim($row->title_bn));
+											}
+										@endphp
 										<div class="news-title-02">
-											<h4 class="heading-03"><a href="#">
+											<h4 class="heading-03"><a href="{{ URL::to('/view-post/'.$row->id.'/'.$slug) }}">
 												@if(session()->get('lang')== 'English')
 											   		{{ $row->title_en }}
 												@else

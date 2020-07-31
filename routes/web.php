@@ -98,7 +98,9 @@ Route::prefix('/admin')->group(function () {
 
 
     //setting 
-
+    //system
+    Route::get('/system/setting','Backend\SettingController@system')->name('setting');
+    Route::post('update/setting/{id}','Backend\SettingController@updateSystem')->name('update.setting');
     //social
     Route::get('/social/link','Backend\SettingController@social')->name('social.link');
     Route::post('update/social/link/{id}','Backend\SettingController@updateSocialLink')->name('update.social.link');
@@ -140,12 +142,25 @@ Route::prefix('/admin')->group(function () {
     Route::get('/edit/video/gallery/{id}','Backend\VideoController@edit')->name('video.gallery.edit');
     Route::post('/update/video/gallery/{id}','Backend\VideoController@update')->name('update.video');
 
-    //video gallery start
+    //ads start
     Route::get('/add/ads','Backend\AdController@create')->name('add.ads');
     Route::get('/all/ads','Backend\AdController@index')->name('all.ads');
     Route::post('/store/ads','Backend\AdController@store')->name('store.ads');
     Route::get('/delete/ads/{id}','Backend\AdController@delete')->name('delete.ads');
     Route::get('/edit/ads/{id}','Backend\AdController@edit')->name('edit.ads');
     Route::post('/update/ads/{id}','Backend\AdController@update')->name('update.ads');
+
+    //user start
+    Route::get('/add/user','Backend\RoleController@create')->name('add.user');
+    Route::get('/all/user','Backend\RoleController@index')->name('all.user');
+    Route::post('/store/user','Backend\RoleController@store')->name('store.user');
+    Route::get('/delete/user/{id}','Backend\RoleController@delete')->name('delete.user');
+    Route::get('/edit/user/{id}','Backend\RoleController@edit')->name('edit.user');
+    Route::post('/update/user/{id}','Backend\RoleController@update')->name('update.user');
+
+    //passwordchange
+    Route::get('/change/password','AdminController@changepassword')->name('change.password');
+    Route::post('/update/admin/password/{id}', 'AdminController@updatePassword')->name('update.admin.password');
+
 
 });

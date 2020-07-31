@@ -20,6 +20,13 @@ class CreateAdminsTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->integer('type')->nullable();
+            $table->integer('category')->nullable();
+            $table->integer('division')->nullable();
+            $table->integer('setting')->nullable();
+            $table->integer('gallery')->nullable();
+            $table->integer('ads')->nullable();
+            $table->integer('role')->nullable();
             $table->timestamps();
         });
     }

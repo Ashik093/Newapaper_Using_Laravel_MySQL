@@ -10,6 +10,8 @@ use App\Model\Prayer;
 use App\Model\Livetv;
 use App\Model\Notice;
 use App\Model\Website;
+use App\Model\Setting;
+use Image;
 
 class SettingController extends Controller
 {
@@ -364,6 +366,53 @@ class SettingController extends Controller
             );
 
             return Redirect()->route('website')->with($notification);
+        }
+    }
+
+    public function system()
+    {
+        $system = Setting::first();
+        return view('backend.setting.system',compact('system'));
+    }
+
+    public function updateSystem(Request $request,$id)
+    {
+        $validatedData = $request->validate([
+            'logo' => 'required',
+            'address_bn' => 'required',
+            'address_en' => 'required',
+            'phone_en' => 'required',
+            'phone_bn' => 'required',
+            'email' => 'required',
+        ]);
+        $system = Setting::find($id);
+        $system->address_en = $request->address_en;
+        $system->address_bn = $request->address_bn;
+        $system->phone_bn = $request->phone_bn;
+        $system->phone_en = $request->phone_en;
+        $system->email = $request->email;
+
+        $image = $request->logo;
+        if ($image) {
+            $image_name = date('dm').uniqid().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(500,310)->save(public_path("/upload/system/".$image_name));
+            $system->logo = "upload/system/".$image_name;
+        }
+
+        if ($system->save()) {
+            $notification = array(
+                'messege'=>'Setting Successfully Updated',
+                'type'=>'info'
+            );
+
+            return Redirect()->route('setting')->with($notification);
+        }else{
+            $notification = array(
+                'messege'=>'Unsuccessful',
+                'type'=>'error'
+            );
+
+            return Redirect()->route('setting')->with($notification);
         }
     }
 

@@ -52,25 +52,8 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      
     </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -88,98 +71,13 @@
           <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
             @csrf
           </form>
+
+          <a class="dropdown-item" href="{{ route('change.password') }}">
+             Change Your Password
+          </a>
         </div>
       </li>
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="{{ URL::to('backend/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="{{URL::to('backend/dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="{{URL::to('backend/dist/img/user3-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -222,192 +120,236 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-list-alt"></i>
-              <p>
-                Category
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('category') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('subcategory') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sub Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('category.recycle.bin') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Recycle Bin</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->category ==1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-list-alt"></i>
+                <p>
+                  Category
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('category') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Category</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('subcategory') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sub Category</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('category.recycle.bin') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recycle Bin</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-map-marker-alt"></i>
-              <p>
-                Division
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('division') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Division</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('district') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>District</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('division.recycle.bin') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Recycle Bin</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->division == 1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-map-marker-alt"></i>
+                <p>
+                  Division
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('division') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Division</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('district') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>District</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('division.recycle.bin') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recycle Bin</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-clipboard"></i>
-              <p>
-                Post
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('add.post') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Post</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('all.post') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Post</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('post.recycle') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Recycle Bin</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->post==1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-clipboard"></i>
+                <p>
+                  Post
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('add.post') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Post</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('all.post') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>All Post</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('post.recycle') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recycle Bin</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tools"></i>
-              <p>
-                Settings
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('social.link') }}" class="nav-link">
-                  <i class="fas fa-link nav-icon"></i>
-                  <p>Social Links</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('seo') }}" class="nav-link">
-                  <i class="fas fa-globe nav-icon"></i>
-                  <p>SEO</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('prayer') }}" class="nav-link">
-                  <i class="far fa-clock nav-icon"></i>
-                  <p>Prayer Time</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('live.tv') }}" class="nav-link">
-                  <i class="fas fa-wifi nav-icon"></i>
-                  <p>Live TV</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('notice') }}" class="nav-link">
-                  <i class="far fa-list-alt nav-icon"></i>
-                  <p>Notice</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('website') }}" class="nav-link">
-                  <i class="fab fa-internet-explorer nav-icon"></i>
-                  <p>Important Websites</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->setting==1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tools"></i>
+                <p>
+                  Settings
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('social.link') }}" class="nav-link">
+                    <i class="fas fa-link nav-icon"></i>
+                    <p>Social Links</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('seo') }}" class="nav-link">
+                    <i class="fas fa-globe nav-icon"></i>
+                    <p>SEO</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('prayer') }}" class="nav-link">
+                    <i class="far fa-clock nav-icon"></i>
+                    <p>Prayer Time</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('live.tv') }}" class="nav-link">
+                    <i class="fas fa-wifi nav-icon"></i>
+                    <p>Live TV</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('notice') }}" class="nav-link">
+                    <i class="far fa-list-alt nav-icon"></i>
+                    <p>Notice</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('website') }}" class="nav-link">
+                    <i class="fab fa-internet-explorer nav-icon"></i>
+                    <p>Important Websites</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('setting') }}" class="nav-link">
+                    <i class="fas fa-tools nav-icon"></i>
+                    <p>System Setting</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-photo-video"></i>
-              <p>
-                Gallery
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('photo.gallery') }}" class="nav-link">
-                  <i class="fas fa-camera-retro nav-icon"></i>
-                  <p>Photo Gallery</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('video.gallery') }}" class="nav-link">
-                  <i class="fas fa-record-vinyl nav-icon"></i>
-                  <p>Video Gallery</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->gallery ==1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-photo-video"></i>
+                <p>
+                  Gallery
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('photo.gallery') }}" class="nav-link">
+                    <i class="fas fa-camera-retro nav-icon"></i>
+                    <p>Photo Gallery</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('video.gallery') }}" class="nav-link">
+                    <i class="fas fa-record-vinyl nav-icon"></i>
+                    <p>Video Gallery</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-list-alt"></i>
-              <p>
-                Ads
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('add.ads') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Insert Ads</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('all.ads') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Ads</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(Auth::user()->ads==1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-list-alt"></i>
+                <p>
+                  Ads
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('add.ads') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Insert Ads</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('all.ads') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Ads</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
+
+          @if(Auth::user()->role == 1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-user"></i>
+                <p>
+                  User Role
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('add.user') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Insert Writter</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('all.user') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Writter</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
 
         </ul>
       </nav>
